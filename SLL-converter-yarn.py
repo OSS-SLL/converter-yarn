@@ -1,6 +1,11 @@
 import streamlit as st
 import math
 import pandas as pd
+from PIL import Image
+
+favicon = Image.open('sci-lume-fav_BW.png')
+
+st.set_page_config(page_title="SLL Yarn Conversion", page_icon=favicon)
 
 def convert_yarn_units(value, density, from_unit, to_unit):
     if from_unit == to_unit:
@@ -66,7 +71,9 @@ def convert_yarn_units(value, density, from_unit, to_unit):
     return value * conversion_factors[(from_unit, to_unit)]
 
 # Yarn Conversion Part
-st.title("Yarn Unit Conversion")
+# st.title("Yarn Unit Conversion") commented out for metadata as per recommendations
+st.header("Yarn Unit Conversion")
+st.text("A simple app to convert between different yarn measurements")
 
 mcol1, mcol2 = st.columns([1, 2])
 
