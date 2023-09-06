@@ -12,9 +12,9 @@ def convert_yarn_units(value, density, from_unit, to_unit):
         return value
 
     conversion_factors = {
-        ('Denier', 'Decitex'): (10 / 9),
-        ('Denier', 'Tex'): (1 / 9),
-        ('Denier', 'g/m'): (1 / 9000),
+        ('Denier', 'Decitex'): value * (10 / 9),
+        ('Denier', 'Tex'): value * (1 / 9),
+        ('Denier', 'g/m'): value * (1 / 9000),
         ('Denier', 'Micrometers'): math.sqrt((((value / 9000) / (density / 1e-6)) * 1e12) / math.pi) * 2,
         ('Denier', 'English Cotton Count'): ((value / (9000 * 1.09361 * 453.59237)) ** -1) / 840,
         ('Denier', 'Worsted'): ((value / (9000 * 1.09361 * 453.59237)) ** -1) / 560,
