@@ -68,7 +68,7 @@ def convert_yarn_units(value, density, from_unit, to_unit):
             ((value * 560 * 0.9144 / 453.592370)) ** -1 * 9000),
     }
 
-    return value * conversion_factors[(from_unit, to_unit)]
+    return conversion_factors[(from_unit, to_unit)]
 
 # Yarn Conversion Part
 # st.title("Yarn Unit Conversion") commented out for metadata as per recommendations
