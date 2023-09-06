@@ -35,7 +35,7 @@ def convert_yarn_units(value, density, from_unit, to_unit):
         ('g/m', 'Tex'): (value * 1000),
         ('g/m', 'Micrometers'): math.sqrt((((value) / (density / 1e-6)) * 1e12) / math.pi) * 2,
         ('g/m', 'English Cotton Count'): ((value / (1.09361 * 453.59237)) ** -1) / 840,
-        ('g/m', 'Worsted'): ((value / (1.09361 * 453.59237))) ** -1) / 560,
+        ('g/m', 'Worsted'): ((value / (1.09361 * 453.59237)) ** -1) / 560,
         ('Micrometers', 'Denier'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 9000),
         ('Micrometers', 'Decitex'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 10000),
         ('Micrometers', 'Tex'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 1000),
