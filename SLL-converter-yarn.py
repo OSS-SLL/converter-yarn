@@ -44,10 +44,9 @@ def convert_yarn_units(value, density, from_unit, to_unit):
         ('Micrometers', 'Decitex'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 10000),
         ('Micrometers', 'Tex'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 1000),
         ('Micrometers', 'g/m'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6)),
-        ('Micrometers', 'English Cotton Count'): math.sqrt(
-            (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6)) * 0.9144 / 453.59237) ** -1) / 840,
-        ('Micrometers', 'Worsted'): math.sqrt(
-            (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6)) * 0.9144 / 453.59237) ** -1) / 560,
+        ('Micrometers', 'English Cotton Count'): (1 / (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6)))) * 453.592370 / 0.9144 / 840,
+        ('Micrometers', 'Worsted'): 
+            (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6)) * 0.9144 / 453.59237) ** -1 / 560,
         ('Micrometers', 'Metric'): 1 / (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6))),
         ('English Cotton Count', 'Decitex'): (
             ((value * 840 * 0.9144 / 453.592370) ** -1) * 10000),
@@ -78,8 +77,7 @@ def convert_yarn_units(value, density, from_unit, to_unit):
         ('Metric', 'Decitex'): (1 / value) * 10000,
         ('Metric', 'Tex'): (1 / value) * 1000,
         ('Metric', 'g/m'): (1 / value),
-        ('Metric', 'Micrometers'): math.sqrt(
-            (((((value * 560 * 0.9144 / 453.592370)) ** -1) / (density / 1e-6)) * 1e12) / math.pi) * 2,
+        ('Metric', 'Micrometers'): math.sqrt(((value * density * 1e6)**-1) / math.pi) * 1e6 * 2,
         ('Metric', 'English Cotton Count'): (value * 453.592370 / 0.9144 / 840),
         ('Metric', 'Denier'): (1 / value) * 9000,
         ('Metric', 'Worsted'): (value * 453.592370 / 0.9144 / 560),
