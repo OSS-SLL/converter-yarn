@@ -97,8 +97,8 @@ mcol1, mcol2 = st.columns([1, 2])
 # Define the units for conversion
 # units_old = ['Denier', 'Decitex', 'Tex', 'g/m', 'Micrometers', 'English Cotton Count', 'Worsted']
 # no g/m in the thing because it probably isn't useful and I cannot figure out how to format it good
-units = ['Denier', 'Decitex', 'Tex', 'Micrometers', 'English Cotton Count', 'Worsted']
-tableunits = ['Denier (g/9,000 m)', 'Decitex (g/10,000 m)', 'Tex (g/1,000 m)', 'Micrometers (0.000001 m)', 'English Cotton Count (840 yd/lbs)', 'Worsted (560 yd/lbs)']
+units = ['Denier', 'Decitex', 'Tex', 'Micrometers', 'English Cotton Count', 'Worsted', 'Metric']
+tableunits = ['Denier (g/9,000 m)', 'Decitex (g/10,000 m)', 'Tex (g/1,000 m)', 'Micrometers (0.000001 m)', 'English Cotton Count (840 yd/lbs)', 'Worsted (560 yd/lbs)', 'Metric (1000 m/kg)']
 # for later: add woolen (256 yd/lbs) and metric count (1000m/kg)
 
 # Add number input field
