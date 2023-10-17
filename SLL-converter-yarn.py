@@ -18,24 +18,28 @@ def convert_yarn_units(value, density, from_unit, to_unit):
         ('Denier', 'Micrometers'): math.sqrt((((value / 9000) / (density / 1e-6)) * 1e12) / math.pi) * 2,
         ('Denier', 'English Cotton Count'): ((value / (9000 * 1.09361 * 453.59237)) ** -1) / 840,
         ('Denier', 'Worsted'): ((value / (9000 * 1.09361 * 453.59237)) ** -1) / 560,
+        ('Denier', 'Metric'): 1 / (value * (1 / 9000)),
         ('Decitex', 'Denier'): value * (9 / 10),
         ('Decitex', 'Tex'): value * (1 / 10),
         ('Decitex', 'g/m'): value * (1 / 10000),
         ('Decitex', 'Micrometers'): math.sqrt((((value / 10000) / (density / 1e-6)) * 1e12) / math.pi) * 2,
         ('Decitex', 'English Cotton Count'): ((value / (10000 * 1.09361 * 453.59237)) ** -1) / 840,
         ('Decitex', 'Worsted'): ((value / (10000 * 1.09361 * 453.59237)) ** -1) / 560,
+        ('Decitex', 'Metric'): 1 / (value * (1 / 10000)),
         ('Tex', 'Denier'): value * 9,
         ('Tex', 'Decitex'): value * 10,
         ('Tex', 'g/m'): value * (1 / 1000),
         ('Tex', 'Micrometers'): math.sqrt((((value / 1000) / (density / 1e-6)) * 1e12) / math.pi) * 2,
         ('Tex', 'English Cotton Count'): ((value / (1000 * 1.09361 * 453.59237)) ** -1) / 840,
         ('Tex', 'Worsted'): ((value / (1000 * 1.09361 * 453.59237)) ** -1) / 560,
+        ('Tex', 'Metric'): 1 / (value * (1 / 1000)),
         ('g/m', 'Denier'): (value * 9000),
         ('g/m', 'Decitex'): (value * 10000),
         ('g/m', 'Tex'): (value * 1000),
         ('g/m', 'Micrometers'): math.sqrt((((value) / (density / 1e-6)) * 1e12) / math.pi) * 2,
         ('g/m', 'English Cotton Count'): ((value / (1.09361 * 453.59237)) ** -1) / 840,
         ('g/m', 'Worsted'): ((value / (1.09361 * 453.59237)) ** -1) / 560,
+        ('g/m', 'Metric'): 1 / value,
         ('Micrometers', 'Denier'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 9000),
         ('Micrometers', 'Decitex'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 10000),
         ('Micrometers', 'Tex'): ((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6) * 1000),
@@ -44,6 +48,7 @@ def convert_yarn_units(value, density, from_unit, to_unit):
             (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6)) * 0.9144 / 453.59237) ** -1) / 840,
         ('Micrometers', 'Worsted'): math.sqrt(
             (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6)) * 0.9144 / 453.59237) ** -1) / 560,
+        ('Micrometers', 'Metric'): 1 / (((math.pi * ((value / 2.0) ** 2) * 1e-12) * (density / 1e-6))),
         ('English Cotton Count', 'Decitex'): (
             ((value * 840 * 0.9144 / 453.592370) ** -1) * 10000),
         ('English Cotton Count', 'Tex'): (
@@ -55,6 +60,8 @@ def convert_yarn_units(value, density, from_unit, to_unit):
         ('English Cotton Count', 'Denier'): (
             ((value * 840 * 0.9144 / 453.592370)) ** -1 * 9000),
         ('English Cotton Count', 'Worsted'): ((value * 840) / 560),
+        ('English Cotton Count', 'Metric'): 1 / (
+            ((value * 840 * 0.9144 / 453.592370) ** -1)),
         ('Worsted', 'Decitex'): (
             ((value * 560 * 0.9144 / 453.592370)) ** -1 * 10000),
         ('Worsted', 'Tex'): (
@@ -66,6 +73,16 @@ def convert_yarn_units(value, density, from_unit, to_unit):
         ('Worsted', 'English Cotton Count'): ((value * 560) / 840),
         ('Worsted', 'Denier'): (
             ((value * 560 * 0.9144 / 453.592370)) ** -1 * 9000),
+        ('Worsted', 'Metric'): 1 / (
+            ((value * 560 * 0.9144 / 453.592370)) ** -1),
+        ('Metric', 'Decitex'): (1 / value) * 10000,
+        ('Metric', 'Tex'): (1 / value) * 1000,
+        ('Metric', 'g/m'): (1 / value),
+        ('Metric', 'Micrometers'): math.sqrt(
+            (((((value * 560 * 0.9144 / 453.592370)) ** -1) / (density / 1e-6)) * 1e12) / math.pi) * 2,
+        ('Metric', 'English Cotton Count'): (value * 453.592370 / 0.9144 / 840),
+        ('Metric', 'Denier'): (1 / value) * 9000,
+        ('Metric', 'Worsted'): (value * 453.592370 / 0.9144 / 560),
     }
 
     return conversion_factors[(from_unit, to_unit)]
